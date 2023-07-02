@@ -3,10 +3,10 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="account1" class="helloworld.Account"></bean>
-    <bean id="account2" class="helloworld.Account">
-        <property name="id" value="2" />
-        <property name="name" value="name2" />
-        <property name="age" value="22" />
+    <bean id="accountRepository" class="helloworld.impl.AccountRepositoryImpl"/>
+
+    <bean id="accountService" class="helloworld.impl.AccountServiceImpl">
+        <property name="accountRepository" ref="accountRepository"></property>
     </bean>
+
 </beans>

@@ -4,14 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>vn.iviettech.project</groupId>
-    <artifactId>helloword</artifactId>
+    <groupId>org.example</groupId>
+    <artifactId>helloWorld</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <spring.context.version>5.1.0.RELEASE</spring.context.version>
+        <maven.compiler.source>15</maven.compiler.source>
+        <maven.compiler.target>15</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.context.version>6.0.9</spring.context.version>
     </properties>
 
     <dependencies>
@@ -20,11 +21,11 @@
             <artifactId>spring-context</artifactId>
             <version>${spring.context.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>${spring.context.version}</version>
         </dependency>
     </dependencies>
+
 </project>
