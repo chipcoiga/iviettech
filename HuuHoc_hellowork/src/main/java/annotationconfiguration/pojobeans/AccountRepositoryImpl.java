@@ -36,4 +36,9 @@ public class AccountRepositoryImpl implements AccountRepository{
     public Account find(long accountId) {
         return accountsMap.get(accountId);
     }
+
+    @Override
+    public void createAccount(Account account) {
+        System.out.println("Đã create thành công");
+    }
 }

@@ -8,6 +8,8 @@ public class Account {
     private double balance;
     private Date accessTime;
     private boolean locked;
+    private int age;
+    private String password;
 
     public long getId() {
         return id;
@@ -47,5 +49,21 @@ public class Account {
 
     public void setLocked(boolean locked) {
         this.locked = locked;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }

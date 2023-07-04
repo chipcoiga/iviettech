@@ -1,19 +1,29 @@
 package annotationconfiguration.pojobeans;
 
+import annotationconfiguration.validator.AccountValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service("accountService")
 public class AccountServiceImpl implements AccountService{
     //AccountRepository is a dependency of AccountServiceImpl
     @Autowired
-    private AccountRepositoryImpl accountRepository;
+    private AccountRepository accountRepository;
 
-    //Dependency injection via Setter method
-//
-//    public void setAccountRepository(AccountRepository accountRepository) {
-//        this.accountRepository = accountRepository;
-//    }
+    @Autowired
+    private List<AccountValidator> validators;
+
+    @Override
+    public void createAccount(Account account) {
+        validate(account);
+        accountRepository.createAccount(account);
+    }
+
+    private void validate(final Account account) {
+        validators.forEach(validator -> validator.validate(account));
+    }
 
     @Override
     public void transferMoney(long fromAccountId, long toAccountId, double amount) {
