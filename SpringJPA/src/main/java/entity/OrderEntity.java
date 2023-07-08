@@ -1,11 +1,9 @@
 package entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 public class OrderEntity {
@@ -16,6 +14,21 @@ public class OrderEntity {
     private LocalDateTime orderDate;
     private String customerName;
     private String customerAddress;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "order_product_mapping",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id")
+    )
+    private List<ProductEntity> productEntities;
+
+    public List<ProductEntity> getProductEntities() {
+        return productEntities;
+    }
+
+    public void setProductEntities(List<ProductEntity> productEntities) {
+        this.productEntities = productEntities;
+    }
 
     public int getId() {
         return id;

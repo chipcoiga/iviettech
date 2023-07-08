@@ -3,6 +3,7 @@ package entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "customer")
@@ -18,7 +19,6 @@ public class CustomerEntity {
     private String email;
     private String phone;
     private String address;
-
     @Override
     public String toString() {
         return "CustomerEntity{" +
