@@ -1,12 +1,15 @@
 import config.BeanConfiguration;
 import entity.CustomerEntity;
+import entity.OrderDetailEntity;
 import entity.OrderEntity;
 import entity.ProductEntity;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 import repository.CustomerRepository;
 import repository.OrderRepository;
 import repository.ProductRepository;
+import service.OrderService;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -14,7 +17,7 @@ import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(BeanConfiguration.class);
 //        CustomerRepository repository = context.getBean("customerRepository",  CustomerRepository.class);
 
@@ -52,7 +55,7 @@ public class Main {
 //        productEntity.setName("Chả cá");
 //        productEntity.setPrice(5000D);
 
-        ProductRepository productRepository = context.getBean("productRepository",  ProductRepository.class);
+//        ProductRepository productRepository = context.getBean("productRepository",  ProductRepository.class);
 //        productEntity = productRepository.save(productEntity);
 
 //
@@ -61,13 +64,23 @@ public class Main {
 //        orderEntity.setCustomerName("LHLoc");
 //        orderEntity.setProductEntities(List.of(productEntity));
 //
-        OrderRepository orderRepository = context.getBean("orderRepository", OrderRepository.class);
+//        OrderRepository orderRepository = context.getBean("orderRepository", OrderRepository.class);
 ////        orderRepository.save(orderEntity);
 
 
-        orderRepository.findAll().forEach(order -> {
-            System.out.println(order.getProductEntities().get(0).getName());
-        });
+//        orderRepository.findAll().forEach(order -> {
+//            System.out.println(order.getProductEntities().get(0).getName());
+//        });
+
+        OrderService service = context.getBean("orderService", OrderService.class);
+
+        OrderEntity order = new OrderEntity();
+        order.setCustomerName("LhLoc");
+
+        OrderDetailEntity detail = new OrderDetailEntity();
+        detail.setProductName("Tivi");
+
+        service.saveOrder(order, detail);
     }
 
 }

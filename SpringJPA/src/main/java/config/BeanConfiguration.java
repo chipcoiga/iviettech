@@ -19,6 +19,7 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = {"repository"})
+@ComponentScan(basePackages = "service")
 public class BeanConfiguration {
 
     @Bean
