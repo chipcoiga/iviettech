@@ -1,24 +1,18 @@
 import config.BeanConfiguration;
-import entity.CustomerEntity;
+import config.MainWebAppInitializer;
+import config.WebConfig;
 import entity.OrderDetailEntity;
 import entity.OrderEntity;
-import entity.ProductEntity;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Transactional;
-import repository.CustomerRepository;
-import repository.OrderRepository;
-import repository.ProductRepository;
 import service.OrderService;
-
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
-import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(BeanConfiguration.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
+                BeanConfiguration.class,
+                MainWebAppInitializer.class,
+                WebConfig.class);
 //        CustomerRepository repository = context.getBean("customerRepository",  CustomerRepository.class);
 
 //        CustomerEntity customer = new CustomerEntity();
@@ -71,16 +65,16 @@ public class Main {
 //        orderRepository.findAll().forEach(order -> {
 //            System.out.println(order.getProductEntities().get(0).getName());
 //        });
-
-        OrderService service = context.getBean("orderService", OrderService.class);
-
-        OrderEntity order = new OrderEntity();
-        order.setCustomerName("ko phai LHLoc");
-
-        OrderDetailEntity detail = new OrderDetailEntity();
-        detail.setProductName("Tu lanh");
-
-        service.saveOrder(order, detail);
+//
+//        OrderService service = context.getBean("orderService", OrderService.class);
+//
+//        OrderEntity order = new OrderEntity();
+//        order.setCustomerName("ko phai LHLoc");
+//
+//        OrderDetailEntity detail = new OrderDetailEntity();
+//        detail.setProductName("Tu lanh");
+//
+//        service.saveOrder(order, detail);
     }
 
 }
