@@ -2,6 +2,7 @@ package vn.iviettech.springbootmvc.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import vn.iviettech.springbootmvc.converter.BookConverter;
 import vn.iviettech.springbootmvc.domain.Book;
 import vn.iviettech.springbootmvc.entity.BookEntity;
@@ -12,6 +13,7 @@ import vn.iviettech.springbootmvc.service.BookService;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -23,11 +25,20 @@ public class BookServiceImpl implements BookService {
     private CategoryRepository categoryRepository;
 
     @Override
+    @Transactional
     public List<Book> getAllBook() {
         List<BookEntity> bookEntities = bookRepository.findAll();
-
+        testX();
         return bookEntities.stream().map(BookConverter::toModel)
                 .collect(Collectors.toList());
+    }
+
+//    @Transactional
+    public void testX() {
+        BookEntity entity = bookRepository.findById(4L).get();
+        System.out.println(entity.getName());
+        entity.setName("bbbbbbbbbbbb");
+//        bookRepository.save(entity);
     }
 
     @Override
