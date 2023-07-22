@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>File upload</title>
+</head>
+<body>
+
+<span>File upload: </span>
+<br/>
+<span th:text="${message}"></span>
+<br/>
+<br/>
+<span>File extension: </span>
+<br/>
+<span th:text="${fileExtension}"></span>
+<br/>
+<span>File download: </span>
+<a th:href="${fileDownloadLink}">download herre</a>
+<br/>
+<span th:text="${fileName}"></span>
+<br/>
+<br/>
+<span>===============</span>
+<br/>
+<form id="uploadForm"
+        method="post"
+        th:action="@{/files/upload}"
+        enctype="multipart/form-data">
+
+    <input id="input-file" type="file" name="file" />
+    <button class="btn btn-sm btn-outline-success float-right" type="submit">
+        Upload
+    </button>
+</form>
+</body>
+</html>

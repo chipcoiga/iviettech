@@ -1,12 +1,15 @@
 package vn.iviettech.springbootmvc.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+import lombok.NonNull;
 import vn.iviettech.springbootmvc.entity.BookDetailEntity;
 import vn.iviettech.springbootmvc.entity.CategoryEntity;
 
 public class Book {
     private Long id;
     private String author;
+//    @Pattern(regexp = "^[a-zA-Z0-9]+(?:\\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\\.[a-zA-Z0-9]+)*$")
     private String name;
     private Long categoryId;
     public Long getId() {

@@ -1,5 +1,6 @@
 package vn.iviettech.springbootmvc.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,7 +42,7 @@ public class BookController {
     }
 
     @PostMapping("create")
-    public String create(@ModelAttribute Book book, Model model) {
+    public String create(@ModelAttribute @Valid Book book, Model model) {
 
         bookService.create(book);
 
