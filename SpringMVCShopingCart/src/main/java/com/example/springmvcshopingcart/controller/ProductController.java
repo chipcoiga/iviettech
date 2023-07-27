@@ -18,8 +18,12 @@ import java.util.List;
 @RequestMapping("products")
 public class ProductController {
 
-    @Autowired
-    private ProductService productService;
+    private final ProductService productService;
+
+    public ProductController(ProductService productService, CartEntity cartEntity) {
+        this.productService = productService;
+        this.cartEntity = cartEntity;
+    }
 
     @GetMapping
     public String list(Model model) {
@@ -28,8 +32,7 @@ public class ProductController {
         return "product-list";
     }
 
-    @Autowired
-    private CartEntity cartEntity;
+    private final CartEntity cartEntity;
 
     @PostMapping
     public String add(@ModelAttribute ProductEntity product, Model model) {
