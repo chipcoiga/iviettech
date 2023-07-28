@@ -28,7 +28,9 @@ public class BookServiceImpl implements BookService {
     @Transactional
     public List<Book> getAllBook() {
         List<BookEntity> bookEntities = bookRepository.findAll();
-        testX();
+        bookEntities.get(2).setName("yyyyyyy");
+        bookRepository.save(bookEntities.get(2));
+        bookEntities.get(2).setName("xxxxxxxxxxxxx");
         return bookEntities.stream().map(BookConverter::toModel)
                 .collect(Collectors.toList());
     }
@@ -37,7 +39,7 @@ public class BookServiceImpl implements BookService {
     public void testX() {
         BookEntity entity = bookRepository.findById(4L).get();
         System.out.println(entity.getName());
-        entity.setName("bbbbbbbbbbbb");
+        entity.setName("nnnnn");
 //        bookRepository.save(entity);
     }
 

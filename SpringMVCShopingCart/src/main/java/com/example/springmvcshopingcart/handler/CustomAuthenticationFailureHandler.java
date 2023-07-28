@@ -10,7 +10,7 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 import java.io.IOException;
 import java.util.Calendar;
 
-public class CustomAauthenticationFailureHandler implements AuthenticationFailureHandler {
+public class CustomAuthenticationFailureHandler implements AuthenticationFailureHandler {
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
         System.out.println(exception);
@@ -18,5 +18,6 @@ public class CustomAauthenticationFailureHandler implements AuthenticationFailur
 
         String jsonPayload = "{\"message\" : \"%s\", \"timestamp\" : \"%s\" }";
         response.getOutputStream().println(String.format(jsonPayload, exception.getMessage(), Calendar.getInstance().getTime()));
+        response.sendRedirect("login?error=Bad credentials");
     }
 }

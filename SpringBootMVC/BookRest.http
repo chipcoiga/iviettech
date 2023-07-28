@@ -1,0 +1,15 @@
+POST {{host}}/books/rest/path_variable?param=xxxx
+Content-Type: application/json
+
+{
+  "name": "nguyen vu te",
+  "author": "tac gia"
+}
+
+###
+GET {{host}}/books/rest
+Accept: application/json
+
+###
+
+
