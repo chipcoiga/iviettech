@@ -1,5 +1,6 @@
 package com.example.springmvcshopingcart.config;
 
+import com.example.springmvcshopingcart.filter.IPFilter;
 import com.example.springmvcshopingcart.handler.CustomAuthenticationFailureHandler;
 import com.example.springmvcshopingcart.handler.CustomAuthenticationSuccessHandler;
 import com.example.springmvcshopingcart.service.CustomUserDetailService;
@@ -7,6 +8,7 @@ import org.hibernate.Interceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -17,6 +19,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import java.util.ArrayList;
 
 @Configuration
 @EnableWebSecurity
@@ -50,6 +55,8 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
@@ -75,8 +82,16 @@ public class SecurityConfig {
                         .deleteCookies("JSESSIONID")
 //                        .logoutSuccessHandler(logoutSuccessHandler())
                 );
+
+//        http.addFilterBefore(filter(), UsernamePasswordAuthenticationFilter.class);
+
         return http.build();
     }
+
+//    @Bean
+//    public IPFilter filter() {
+//        return new IPFilter();
+//    }
 
     @Bean
     public CustomAuthenticationFailureHandler authenticationFailureHandler() {
