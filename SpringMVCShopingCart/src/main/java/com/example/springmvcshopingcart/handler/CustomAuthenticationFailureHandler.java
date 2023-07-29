@@ -12,7 +12,11 @@ import java.util.Calendar;
 
 public class CustomAuthenticationFailureHandler implements AuthenticationFailureHandler {
     @Override
-    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
+    public void onAuthenticationFailure(HttpServletRequest request,
+                                        HttpServletResponse response,
+                                        AuthenticationException exception)
+            throws IOException, ServletException {
+
         System.out.println(exception);
         response.setStatus(HttpStatus.UNAUTHORIZED.value());
 
