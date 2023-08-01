@@ -5,4 +5,6 @@ import com.example.springmvcshopingcart.exception.FieldMissMatchException;
 
 public interface UserService {
     void register(UserModel userModel) throws FieldMissMatchException;
+
+    String averageMathAlphabet(int math, int physical);
 }

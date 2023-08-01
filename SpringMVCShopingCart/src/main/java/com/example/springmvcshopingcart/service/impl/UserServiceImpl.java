@@ -33,4 +33,33 @@ public class UserServiceImpl implements UserService {
         entity.setPassword(passwordEncoder.encode(entity.getPassword()));
         repository.save(entity);
     }
+
+    @Override
+    public String averageMathAlphabet(int math, int physical) {//8, 7 => ket qua == 7.5?
+       float average = (math + physical)/2.0f;
+
+       if (math < 0 || physical < 0) {
+           throw new RuntimeException();
+       }
+
+        if (math > 10 || physical > 10) {
+            throw new RuntimeException();
+        }
+
+       if (average >= 8) {
+           return "A";
+       }
+
+        if (6 <= average) {
+            return "B";
+        }
+
+        if (0 <= average && average < 4) {
+            return "D";
+        }
+
+        return "";
+    }
+
+
 }

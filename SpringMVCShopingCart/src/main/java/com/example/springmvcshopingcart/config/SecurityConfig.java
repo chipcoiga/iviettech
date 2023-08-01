@@ -70,7 +70,6 @@ public class SecurityConfig {
                         .anyRequest()
                         .authenticated()
                 )
-
                 .formLogin(formLogin -> formLogin.loginPage("/login")
                         .loginProcessingUrl("/perform_login")
 //                        .defaultSuccessUrl("/home")
@@ -81,7 +80,9 @@ public class SecurityConfig {
                 .logout(logout -> logout.logoutUrl("/perform_logout")
                         .deleteCookies("JSESSIONID")
 //                        .logoutSuccessHandler(logoutSuccessHandler())
-                );
+                )
+//                .rememberMe(me -> {}) //TODO search them tren mang
+        ;
 
 //        http.addFilterBefore(filter(), UsernamePasswordAuthenticationFilter.class);
 
