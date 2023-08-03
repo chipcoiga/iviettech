@@ -65,7 +65,7 @@ public class SecurityConfig {
                         .hasRole("ADMIN")
 //                        .requestMatchers("/anonymous*")
 //                        .anonymous()
-                        .requestMatchers("/login*", "/signup")
+                        .requestMatchers("/login*", "/signup", "/products/rest", "/remmote")
                         .permitAll()
                         .anyRequest()
                         .authenticated()

@@ -44,7 +44,7 @@ public class ProductController {
         return "product-list";
     }
 
-    @GetMapping("rest")
+//    @GetMapping("rest")
     public ResponseEntity<List<ProductEntity>> add() {
         return ResponseEntity.status(200).body(productService.getAll());
     }
