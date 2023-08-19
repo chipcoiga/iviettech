@@ -1,5 +1,7 @@
 package annotationconfiguration;
 
+import org.springframework.stereotype.Service;
+
 import java.security.InvalidKeyException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,14 +14,10 @@ public class Main {
 
 
 
+@Service
 class BaiTap {
     public void bai1() throws InvalidKeyException {
-        //...
-        throw new InvalidKeyException();
-    }
-
-    public void bai2() throws InvalidKeyException {
-        //...
+        System.out.println("hehe");
         throw new InvalidKeyException();
     }
 }
@@ -27,43 +25,28 @@ class BaiTap {
 class LamBaiTap {
     private BaiTap baiTap;
 
-    public void lamBaiTap1() {
-//        baiTap.bai1();
-        lamBaiTapX();
-    }
-
-    public void lamBaiTap2() {
-//        baiTap.bai2();
-        lamBaiTapX();
-    }
-
-    public void lamBaiTapX() {
-        try {
-            baiTap.bai1();
-        } catch (InvalidKeyException e) {
-            System.out.println(e);
-        }
-    }
-
-    public void lamBaiTap3() {
-        hideException(baiTapX -> baiTap.bai2());
-    }
-
     public void lamBaiTap4() {
-        hideException(baiTapX -> baiTap.bai1());
+        hideException(() -> baiTap.bai1());
     }
 
     public void hideException(LamBaiTapHo lamBaiTapHo) {
         try {
-            lamBaiTapHo.apply(lamBaiTapHo);
+            lamBaiTapHo.apply();
         } catch (InvalidKeyException e) {
             System.out.println(e);
         }
     }
+
+    public static void main(String[] args) {
+        LamBaiTap lamBaiTap = new LamBaiTap();
+        lamBaiTap.baiTap = new BaiTap();
+        lamBaiTap.lamBaiTap4();
+
+    }
 }
 
 @FunctionalInterface
-interface LamBaiTapHo<I> {
-    void apply(I i) throws InvalidKeyException;
+interface LamBaiTapHo {
+    void apply() throws InvalidKeyException;
 }
 
