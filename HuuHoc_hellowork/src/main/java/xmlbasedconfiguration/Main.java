@@ -1,7 +1,10 @@
 package xmlbasedconfiguration;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import pojobeans.AccountRepositoryImpl;
 import pojobeans.AccountService;
+import pojobeans.AccountServiceImpl;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,5 +22,8 @@ public class Main {
         System.out.println("Account 1 balance : " + accountService.getAccount(1).getBalance());
         System.out.println("Account 2 balance : " + accountService.getAccount(2).getBalance());
 
+
+
+        //=======
     }
 }

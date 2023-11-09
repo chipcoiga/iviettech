@@ -5,7 +5,6 @@ public class AccountServiceImpl implements AccountService {
     private AccountRepository accountRepository;
 
     //Dependency injection via Setter method
-
     public void setAccountRepository(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
     }
