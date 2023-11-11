@@ -26,10 +26,20 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void saveOrder(OrderEntity orderEntity, OrderDetailEntity detailEntity) throws Exception {
         orderEntity = orderRepository.save(orderEntity);
-        if (orderEntity.getId() % 2 == 0) {
-            throw new Exception("Id là số chẳn");
-        }
+//        if (orderEntity.getId() % 2 == 0) {
+//            throw new Exception("Id là số chẳn");
+//        }
         detailEntity.setOrderEntity(orderEntity);
         orderDetailRepository.save(detailEntity);
+    }
+
+    @Override
+    public List<OrderEntity> findAllOrder() {
+        return orderRepository.findAll();
+    }
+
+    @Override
+    public List<OrderEntity> findByCustomerName() {
+        return orderRepository.caigicungduoc("javhd", 5);
     }
 }

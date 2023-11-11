@@ -80,7 +80,20 @@ public class Main {
         OrderDetailEntity detail = new OrderDetailEntity();
         detail.setProductName("Tu lanh");
 
-        service.saveOrder(order, detail);
+//        service.saveOrder(order, detail);
+
+//        for (OrderEntity order1 : service.findAllOrder()) {
+//            System.out.println(order1.getId());
+//            System.out.println(order1.getCustomerName());
+//            System.out.println("==============");
+//        }
+
+        for (OrderEntity order1 : service.findByCustomerName()) {
+            System.out.println(order1.getId());
+            System.out.println(order1.getCustomerName());
+            System.out.println("==============");
+        }
+
     }
 
 }
