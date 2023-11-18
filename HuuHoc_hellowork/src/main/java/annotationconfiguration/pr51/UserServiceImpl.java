@@ -11,6 +11,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String getName() {
-        return userRepository.getName();
+        String name = userRepository.getName();
+        System.out.println(name + "haha");
+        return name;
     }
 }
