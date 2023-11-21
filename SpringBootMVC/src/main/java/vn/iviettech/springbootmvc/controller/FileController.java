@@ -48,6 +48,7 @@ public class FileController {
             model.addAttribute("message", message);
             model.addAttribute("fileExtension", fileExtension);
             model.addAttribute("fileDownloadLink", "/files/download/" + file.getOriginalFilename());
+            model.addAttribute("fileX", "/static/" + file.getOriginalFilename());
 
         } catch (Exception e) {
             message = "Could not upload the file: " + file.getOriginalFilename() + ". Error: " + e.getMessage();
