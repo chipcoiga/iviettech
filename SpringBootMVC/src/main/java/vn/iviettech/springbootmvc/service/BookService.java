@@ -8,4 +8,6 @@ public interface BookService {
     List<Book> getAllBook();
 
     void create(Book book);
+
+    List<Book> searchBook(Long categoryId, String searchText);
 }

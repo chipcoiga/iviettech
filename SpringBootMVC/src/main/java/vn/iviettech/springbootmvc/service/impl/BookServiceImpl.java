@@ -11,6 +11,7 @@ import vn.iviettech.springbootmvc.repository.BookRepository;
 import vn.iviettech.springbootmvc.repository.CategoryRepository;
 import vn.iviettech.springbootmvc.service.BookService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -28,9 +29,9 @@ public class BookServiceImpl implements BookService {
     @Transactional
     public List<Book> getAllBook() {
         List<BookEntity> bookEntities = bookRepository.findAll();
-        bookEntities.get(2).setName("yyyyyyy");
-        bookRepository.save(bookEntities.get(2));
-        bookEntities.get(2).setName("xxxxxxxxxxxxx");
+//        bookEntities.get(2).setName("yyyyyyy");
+//        bookRepository.save(bookEntities.get(2));
+//        bookEntities.get(2).setName("xxxxxxxxxxxxx");
         return bookEntities.stream().map(BookConverter::toModel)
                 .collect(Collectors.toList());
     }
@@ -47,6 +48,17 @@ public class BookServiceImpl implements BookService {
     public void create(Book book) {
         BookEntity entity = convertToEntity(book);
         bookRepository.save(entity);
+    }
+
+    @Override
+    public List<Book> searchBook(Long categoryId, String searchText) {
+
+        CategoryEntity category = categoryRepository.findById(categoryId).get();
+
+        return bookRepository.findByAuthorContainingAndCategoryEntity(searchText, category)
+                .stream()
+                .map(BookConverter::toModel)
+                .collect(Collectors.toList());
     }
 
     private BookEntity convertToEntity(Book book) {
