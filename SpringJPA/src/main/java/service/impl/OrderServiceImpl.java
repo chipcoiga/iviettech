@@ -25,12 +25,17 @@ public class OrderServiceImpl implements OrderService {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void saveOrder(OrderEntity orderEntity, OrderDetailEntity detailEntity) throws Exception {
+        //Lưu Order
         orderEntity = orderRepository.save(orderEntity);
-//        if (orderEntity.getId() % 2 == 0) {
-//            throw new Exception("Id là số chẳn");
-//        }
+
+        //Lưu Order detail
         detailEntity.setOrderEntity(orderEntity);
         orderDetailRepository.save(detailEntity);
+
+        //throw exc
+        if (orderEntity.getId() % 2 == 0) {
+            throw new Exception("Id là số chẳn");
+        }
     }
 
     @Override

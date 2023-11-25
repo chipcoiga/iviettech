@@ -10,9 +10,11 @@ public class OrderDetailEntity {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_entity_id")
     private OrderEntity orderEntity;
+
+
     private String productName;
     private int quantity;
     private double unitPrice;

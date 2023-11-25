@@ -103,4 +103,8 @@ public class SecurityConfig {
     public CustomAuthenticationSuccessHandler authenticationSuccessHandler() {
         return new CustomAuthenticationSuccessHandler();
     }
+
+    public static void main(String[] args) {
+        System.out.println(new BCryptPasswordEncoder().encode("12345"));
+    }
 }

@@ -2,7 +2,9 @@ package helloworld.impl;
 
 import helloworld.Account;
 import helloworld.AccountRepository;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class AccountRepositoryImpl implements AccountRepository {
     @Override
     public void updateAccount(Account account) {

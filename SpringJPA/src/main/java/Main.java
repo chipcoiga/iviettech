@@ -80,7 +80,7 @@ public class Main {
         OrderDetailEntity detail = new OrderDetailEntity();
         detail.setProductName("Tu lanh");
 
-//        service.saveOrder(order, detail);
+        service.saveOrder(order, detail);
 
 //        for (OrderEntity order1 : service.findAllOrder()) {
 //            System.out.println(order1.getId());
@@ -88,9 +88,9 @@ public class Main {
 //            System.out.println("==============");
 //        }
 
-        for (OrderEntity order1 : service.findByCustomerName()) {
-            System.out.println(order1.getId());
-            System.out.println(order1.getCustomerName());
+        for (OrderEntity order1 : service.findAllOrder()) {
+            System.out.println("OrderID: " + order1.getId());
+            System.out.println("OrderDetailID: " + order1.getOrderDetailEntities().get(0).getId());
             System.out.println("==============");
         }
 

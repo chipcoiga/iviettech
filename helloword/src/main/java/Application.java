@@ -1,5 +1,6 @@
 import helloworld.Account;
 import helloworld.AccountService;
+import helloworld.impl.AccountServiceImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.expression.Expression;
@@ -7,6 +8,7 @@ import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 
 public class Application {
+    AccountService accountService;
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
         AccountService accountService = (AccountService) context.getBean("accountService");

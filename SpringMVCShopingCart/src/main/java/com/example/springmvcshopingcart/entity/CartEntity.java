@@ -17,15 +17,6 @@ public class CartEntity {
     private OrderEntity orderEntity = new OrderEntity();
 
     public void addItem(ProductEntity productEntity) {
-        /**
-         * Khi add hoặc update sản phẩm vào cart thì có 2 trường hợp xảy ra:
-         *  1. Sản phẩm chưa có trong cart trước đó
-         *  2. Sản phẩm đã có trong cart trước đó
-         * Cách xử lý:
-         *  1. Đối với trường hợp này chỉ cẩn thêm orderDetail vào list của orderEntity.getOrderDetailEntities() là được
-         *  2. Đối với trường hợp này thì cần cộng thêm quantity vào OrderDetail đã tồn tại
-         * Tìm trong orderEntity hiện tại xem sa
-         */
         OrderDetailEntity detail = new OrderDetailEntity();
         detail.setProductEntity(productEntity);
         detail.setQuantity(1);

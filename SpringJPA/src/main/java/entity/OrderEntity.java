@@ -15,20 +15,23 @@ public class OrderEntity {
     private String customerName;
     private String customerAddress;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "order_product_mapping",
-            joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id")
-    )
-    private List<ProductEntity> productEntities;
+    @OneToMany(mappedBy = "orderEntity", fetch = FetchType.EAGER)
+    private List<OrderDetailEntity> orderDetailEntities;
 
-    public List<ProductEntity> getProductEntities() {
-        return productEntities;
-    }
+//    @ManyToMany(fetch = FetchType.EAGER)
+//    @JoinTable(name = "order_product_mapping",
+//            joinColumns = @JoinColumn(name = "order_id"),
+//            inverseJoinColumns = @JoinColumn(name = "product_id")
+//    )
+//    private List<ProductEntity> productEntities;
 
-    public void setProductEntities(List<ProductEntity> productEntities) {
-        this.productEntities = productEntities;
-    }
+//    public List<ProductEntity> getProductEntities() {
+//        return productEntities;
+//    }
+
+//    public void setProductEntities(List<ProductEntity> productEntities) {
+//        this.productEntities = productEntities;
+//    }
 
     public int getId() {
         return id;
@@ -60,5 +63,13 @@ public class OrderEntity {
 
     public void setCustomerAddress(String customerAddress) {
         this.customerAddress = customerAddress;
+    }
+
+    public List<OrderDetailEntity> getOrderDetailEntities() {
+        return orderDetailEntities;
+    }
+
+    public void setOrderDetailEntities(List<OrderDetailEntity> orderDetailEntities) {
+        this.orderDetailEntities = orderDetailEntities;
     }
 }

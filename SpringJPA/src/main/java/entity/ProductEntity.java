@@ -15,16 +15,16 @@ public class ProductEntity {
     private String name;
     private Double price;
 
-    @ManyToMany(mappedBy = "productEntities", fetch = FetchType.EAGER)
-    private List<OrderEntity> orderEntities;
+//    @ManyToMany(mappedBy = "productEntities", fetch = FetchType.EAGER)
+//    private List<OrderEntity> orderEntities;
 
-    public List<OrderEntity> getOrderEntities() {
-        return orderEntities;
-    }
+//    public List<OrderEntity> getOrderEntities() {
+//        return orderEntities;
+//    }
 
-    public void setOrderEntities(List<OrderEntity> orderEntities) {
-        this.orderEntities = orderEntities;
-    }
+//    public void setOrderEntities(List<OrderEntity> orderEntities) {
+//        this.orderEntities = orderEntities;
+//    }
 
     public String getName() {
         return name;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Shopping</title>
@@ -21,7 +21,8 @@
 
 <footer th:fragment="footer">
     <a th:href="@{/products}">Product List</a> |
-    <a th:href="@{/cart}">Cart</a> |
+    <a th:href="@{|${#httpServletRequest.requestURL}/cart}">Cart</a> |
+    <a th:href="@{/products/cart|}">Cart1</a> |
 </footer>
 </body>
 </html>

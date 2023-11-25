@@ -15,7 +15,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Account getAccount(int id) {
-        return accountRepository.getAccountById(id);
+        return new Account();
     }
 
     public void setAccountRepository(AccountRepository accountRepository) {
