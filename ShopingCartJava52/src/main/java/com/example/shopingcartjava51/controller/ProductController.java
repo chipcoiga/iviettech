@@ -1,6 +1,5 @@
 package com.example.shopingcartjava51.controller;
 
-import com.example.shopingcartjava51.domain.CartHolder;
 import com.example.shopingcartjava51.entity.ProductEntity;
 import com.example.shopingcartjava51.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,26 +12,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-@RequestMapping("cart")
+@RequestMapping("products")
 @Controller
-public class CartController {
-
-    @Autowired
-    private CartHolder cartHolder;
+public class ProductController {
 
     @Autowired
     private ProductService productService;
 
     @GetMapping
-    public String showCart(Model model) {
-        model.addAttribute("cart", cartHolder);
-        return "cart/list";
+    public String showProducts(Model model) {
+
+        List<ProductEntity> products = productService.getAllProduct();
+        model.addAttribute("products", products);
+
+        return "product/list";
+    }
+
+    @GetMapping("create-page")
+    public String showCreateProductPage(Model model) {
+
+        model.addAttribute("product", new ProductEntity());
+
+        return "product/add";
     }
 
     @PostMapping
-    public String addToCart(@ModelAttribute ProductEntity product, Model model) {
+    public String addProducts(@ModelAttribute ProductEntity product, Model model) {
 
-        cartHolder.addToCart(product);
+        productService.create(product);
 
         // Show list
         List<ProductEntity> products = productService.getAllProduct();
