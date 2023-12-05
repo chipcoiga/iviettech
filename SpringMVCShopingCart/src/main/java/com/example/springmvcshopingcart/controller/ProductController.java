@@ -3,6 +3,7 @@ package com.example.springmvcshopingcart.controller;
 import com.example.springmvcshopingcart.entity.CartEntity;
 import com.example.springmvcshopingcart.entity.ProductEntity;
 import com.example.springmvcshopingcart.service.ProductService;
+import com.example.springmvcshopingcart.util.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -29,6 +30,8 @@ public class ProductController {
     public String list(Model model) {
         model.addAttribute("products", productService.getAll());
         model.addAttribute("product", new ProductEntity());
+        model.addAttribute("user", SecurityUtil.currentUser());
+        model.addAttribute("role", SecurityUtil.getCurrentRole());
         return "product-list";
     }
 
