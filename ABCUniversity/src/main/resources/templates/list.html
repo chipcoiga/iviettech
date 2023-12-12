@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List Test Detail</title>
+</head>
+<body>
+
+<form th:action="search" method="get">
+    <input type="text" th:name="searchText">
+    <input type="submit" value="Search">
+
+    <select  name="testid">
+        <option value="" th:text="---"></option>
+        <option th:each="test : ${tests}" th:value="${test.id}" th:text="${test.name}"></option>
+    </select>
+</form>
+<table>
+    <thead>
+    <tr>
+        <th>Student ID</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Test Name</th>
+        <th>Mark Obtained</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="testDetail : ${testDetails}">
+        <td th:text="${testDetail.studentEntity.id}"></td>
+        <td th:text="${testDetail.studentEntity.firstName + ' ' + testDetail.studentEntity.lastName}"></td>
+        <td th:text="${testDetail.studentEntity.email}"></td>
+        <td th:text="${testDetail.testEntity.name}"></td>
+        <td th:text="${testDetail.pointObtained}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
