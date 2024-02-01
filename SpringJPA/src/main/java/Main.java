@@ -76,6 +76,7 @@ public class Main {
 
         OrderEntity order = new OrderEntity();
         order.setCustomerName("ko phai LHLoc");
+        order.setCustomerAddress("minhthuthathu");
 
         OrderDetailEntity detail = new OrderDetailEntity();
         detail.setProductName("Tu lanh");
@@ -88,9 +89,16 @@ public class Main {
 //            System.out.println("==============");
 //        }
 
-        for (OrderEntity order1 : service.findAllOrder()) {
+//        for (OrderEntity order1 : service.findAllOrder()) {
+//            System.out.println("OrderID: " + order1.getId());
+//            System.out.println("OrderDetailID: " + order1.getOrderDetailEntities().get(0).getId());
+//            System.out.println("==============");
+//        }
+
+        for (OrderEntity order1 : service.findByCustomerName()) {
             System.out.println("OrderID: " + order1.getId());
             System.out.println("OrderDetailID: " + order1.getOrderDetailEntities().get(0).getId());
+            System.out.println("Address: " + order1.getCustomerAddress());
             System.out.println("==============");
         }
 

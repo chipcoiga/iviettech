@@ -11,4 +11,6 @@ public interface OrderService {
     List<OrderEntity> findAllOrder();
 
     List<OrderEntity> findByCustomerName();
+
+    List<OrderEntity> searchByAddress(String address);
 }

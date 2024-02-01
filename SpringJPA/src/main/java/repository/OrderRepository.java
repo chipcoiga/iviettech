@@ -24,4 +24,7 @@ public interface OrderRepository extends JpaRepository<OrderEntity, Long> {
             "where o.customerName like ?1 " +
             "and o.id <= ?2")
     List<OrderEntity> caigicungkoduoc(String customerName, int id);
+
+    List<OrderEntity> findByCustomerAddressContains(String searchText);
+    List<OrderEntity> findByCustomerAddress(String searchText);
 }

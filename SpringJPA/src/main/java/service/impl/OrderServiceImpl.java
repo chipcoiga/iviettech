@@ -33,9 +33,9 @@ public class OrderServiceImpl implements OrderService {
         orderDetailRepository.save(detailEntity);
 
         //throw exc
-        if (orderEntity.getId() % 2 == 0) {
-            throw new Exception("Id là số chẳn");
-        }
+//        if (orderEntity.getId() % 2 == 0) {
+//            throw new Exception("Id là số chẳn");
+//        }
     }
 
     @Override
@@ -45,6 +45,15 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<OrderEntity> findByCustomerName() {
-        return orderRepository.caigicungduoc("javhd", 5);
+//        return orderRepository.caigicungkoduoc("javhd", 50);
+        return orderRepository.caigicungduoc("javhd", 50);
     }
+
+    @Override
+    public List<OrderEntity> searchByAddress(String address) {
+//        return orderRepository.findByCustomerAddressContains(address);
+        return orderRepository.findByCustomerAddress(address);
+    }
+
+
 }
