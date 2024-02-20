@@ -76,59 +76,59 @@ public class Main {
 //        OrderService service = context.getBean("orderService", OrderService.class);
         CustomerService customerService = context.getBean("customerService", CustomerService.class);
 
-//        for (int i = 0; i < 5; i++) {
-//            CustomerEntity entity = new CustomerEntity();
-//            entity.setPhone("0123456789");
-//            entity.setName("customer" + i);
-//            entity.setEmail("customer" + i + "@gmail.com");
-//            entity.setSex(true);
-//            entity.setBirthdate(LocalDateTime.of(2000, 1, 1, 1, 1, 1));
-//            entity.setAddress("Da Nang");
+        for (int i = 0; i < 5; i++) {
+            CustomerEntity entity = new CustomerEntity();
+            entity.setPhone("7667");
+            entity.setName("customer1111111111111" + i);
+            entity.setEmail("customer" + i + "@gmail.com");
+            entity.setSex(true);
+            entity.setBirthdate(LocalDateTime.of(2000, 1, 1, 1, 1, 1));
+            entity.setAddress("Da Nang");
+
+            customerService.createCustomer(entity);
+        }
+
+//        System.out.println("Find by ID");
+//        CustomerEntity entity = customerService.findById(2L);
+//        System.out.println(entity.getId());
+//        System.out.println(entity.getName());
+//        System.out.println(entity.getEmail());
+//        System.out.println("============");
 //
-//            customerService.createCustomer(entity);
-//        }
-
-        System.out.println("Find by ID");
-        CustomerEntity entity = customerService.findById(2L);
-        System.out.println(entity.getId());
-        System.out.println(entity.getName());
-        System.out.println(entity.getEmail());
-        System.out.println("============");
-
-        System.out.println("findAll");
-        List<CustomerEntity> customerEntities = customerService.findAll();
-        System.out.println(customerEntities.size());
-        customerEntities.forEach(item -> System.out.println(item.getEmail()));
-        System.out.println("============");
-
-
-        System.out.println("findByName");
-        List<CustomerEntity> customerEntitiesByName = customerService.findByName("customer4");
-        System.out.println(customerEntitiesByName.size());
-        customerEntitiesByName.forEach(item -> System.out.println(item.getEmail()));
-        System.out.println("============");
-
-
-        System.out.println("findByPhoneOrEmail");
-        List<CustomerEntity> customerEntitiesByMailOrPhone = customerService.findByPhoneOrEmail("1234", "customer3@gmail.com");
-        System.out.println(customerEntitiesByMailOrPhone.size());
-        customerEntitiesByMailOrPhone.forEach(item -> System.out.println(item.getEmail()));
-        System.out.println("============");
-
-
-        System.out.println("findBySexAndBirthdateBetween");
-        LocalDateTime from = LocalDateTime.of(2000, 1, 1, 1, 1, 1);
-        LocalDateTime to = LocalDateTime.now();
-        List<CustomerEntity> findBySexAndBirthdateBetween = customerService.findBySexAndBirthdateBetween(false, from, to);
-        System.out.println(findBySexAndBirthdateBetween.size());
-        findBySexAndBirthdateBetween.forEach(item -> System.out.println(item.getEmail()));
-        System.out.println("============");
-
-        System.out.println("findBySexAndBirthdateBetween2");
-        List<CustomerEntity> findBySexAndBirthdateBetween2 = customerService.findBySexAndBirthdateBetween(true, from, to);
-        System.out.println(findBySexAndBirthdateBetween2.size());
-        findBySexAndBirthdateBetween2.forEach(item -> System.out.println(item.getEmail()));
-        System.out.println("============");
+//        System.out.println("findAll");
+//        List<CustomerEntity> customerEntities = customerService.findAll();
+//        System.out.println(customerEntities.size());
+//        customerEntities.forEach(item -> System.out.println(item.getEmail()));
+//        System.out.println("============");
+//
+//
+//        System.out.println("findByName");
+//        List<CustomerEntity> customerEntitiesByName = customerService.findByName("customer4");
+//        System.out.println(customerEntitiesByName.size());
+//        customerEntitiesByName.forEach(item -> System.out.println(item.getEmail()));
+//        System.out.println("============");
+//
+//
+//        System.out.println("findByPhoneOrEmail");
+//        List<CustomerEntity> customerEntitiesByMailOrPhone = customerService.findByPhoneOrEmail("1234", "customer3@gmail.com");
+//        System.out.println(customerEntitiesByMailOrPhone.size());
+//        customerEntitiesByMailOrPhone.forEach(item -> System.out.println(item.getEmail()));
+//        System.out.println("============");
+//
+//
+//        System.out.println("findBySexAndBirthdateBetween");
+//        LocalDateTime from = LocalDateTime.of(2000, 1, 1, 1, 1, 1);
+//        LocalDateTime to = LocalDateTime.now();
+//        List<CustomerEntity> findBySexAndBirthdateBetween = customerService.findBySexAndBirthdateBetween(false, from, to);
+//        System.out.println(findBySexAndBirthdateBetween.size());
+//        findBySexAndBirthdateBetween.forEach(item -> System.out.println(item.getEmail()));
+//        System.out.println("============");
+//
+//        System.out.println("findBySexAndBirthdateBetween2");
+//        List<CustomerEntity> findBySexAndBirthdateBetween2 = customerService.findBySexAndBirthdateBetween(true, from, to);
+//        System.out.println(findBySexAndBirthdateBetween2.size());
+//        findBySexAndBirthdateBetween2.forEach(item -> System.out.println(item.getEmail()));
+//        System.out.println("============");
 
 
 

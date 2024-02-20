@@ -1,9 +1,10 @@
 package entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Table(name = "customer")
@@ -13,10 +14,12 @@ public class CustomerEntity {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Length(max = 100)
     private String name;
     private LocalDateTime birthdate;
     private Boolean sex;
     private String email;
+    @NotBlank
     private String phone;
     private String address;
     @Override
