@@ -7,10 +7,11 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Transactional
 @Repository
-public interface OrderRepository extends JpaRepository<OrderEntity, Long> {
+public interface OrderRepository extends JpaRepository<OrderEntity, Integer> {
     List<OrderEntity> findByCustomerName(String customerName);
     List<OrderEntity> findByCustomerNameContains(String customerName);
     List<OrderEntity> findByCustomerNameContainsAndIdLessThan(String customerName, int id);

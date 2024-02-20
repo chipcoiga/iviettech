@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import repository.CustomerRepository;
 import repository.OrderRepository;
 import repository.ProductRepository;
+import service.CustomerService;
 import service.OrderService;
 
 import java.time.LocalDateTime;
@@ -72,16 +73,76 @@ public class Main {
 //            System.out.println(order.getProductEntities().get(0).getName());
 //        });
 
-        OrderService service = context.getBean("orderService", OrderService.class);
+//        OrderService service = context.getBean("orderService", OrderService.class);
+        CustomerService customerService = context.getBean("customerService", CustomerService.class);
 
-        OrderEntity order = new OrderEntity();
-        order.setCustomerName("ko phai LHLoc");
-        order.setCustomerAddress("minhthuthathu");
+//        for (int i = 0; i < 5; i++) {
+//            CustomerEntity entity = new CustomerEntity();
+//            entity.setPhone("0123456789");
+//            entity.setName("customer" + i);
+//            entity.setEmail("customer" + i + "@gmail.com");
+//            entity.setSex(true);
+//            entity.setBirthdate(LocalDateTime.of(2000, 1, 1, 1, 1, 1));
+//            entity.setAddress("Da Nang");
+//
+//            customerService.createCustomer(entity);
+//        }
 
-        OrderDetailEntity detail = new OrderDetailEntity();
-        detail.setProductName("Tu lanh");
+        System.out.println("Find by ID");
+        CustomerEntity entity = customerService.findById(2L);
+        System.out.println(entity.getId());
+        System.out.println(entity.getName());
+        System.out.println(entity.getEmail());
+        System.out.println("============");
 
-        service.saveOrder(order, detail);
+        System.out.println("findAll");
+        List<CustomerEntity> customerEntities = customerService.findAll();
+        System.out.println(customerEntities.size());
+        customerEntities.forEach(item -> System.out.println(item.getEmail()));
+        System.out.println("============");
+
+
+        System.out.println("findByName");
+        List<CustomerEntity> customerEntitiesByName = customerService.findByName("customer4");
+        System.out.println(customerEntitiesByName.size());
+        customerEntitiesByName.forEach(item -> System.out.println(item.getEmail()));
+        System.out.println("============");
+
+
+        System.out.println("findByPhoneOrEmail");
+        List<CustomerEntity> customerEntitiesByMailOrPhone = customerService.findByPhoneOrEmail("1234", "customer3@gmail.com");
+        System.out.println(customerEntitiesByMailOrPhone.size());
+        customerEntitiesByMailOrPhone.forEach(item -> System.out.println(item.getEmail()));
+        System.out.println("============");
+
+
+        System.out.println("findBySexAndBirthdateBetween");
+        LocalDateTime from = LocalDateTime.of(2000, 1, 1, 1, 1, 1);
+        LocalDateTime to = LocalDateTime.now();
+        List<CustomerEntity> findBySexAndBirthdateBetween = customerService.findBySexAndBirthdateBetween(false, from, to);
+        System.out.println(findBySexAndBirthdateBetween.size());
+        findBySexAndBirthdateBetween.forEach(item -> System.out.println(item.getEmail()));
+        System.out.println("============");
+
+        System.out.println("findBySexAndBirthdateBetween2");
+        List<CustomerEntity> findBySexAndBirthdateBetween2 = customerService.findBySexAndBirthdateBetween(true, from, to);
+        System.out.println(findBySexAndBirthdateBetween2.size());
+        findBySexAndBirthdateBetween2.forEach(item -> System.out.println(item.getEmail()));
+        System.out.println("============");
+
+
+
+
+
+
+//        OrderEntity order = new OrderEntity();
+//        order.setCustomerName("ko phai LHLoc");
+//        order.setCustomerAddress("minhthuthathu");
+//
+//        OrderDetailEntity detail = new OrderDetailEntity();
+//        detail.setProductName("Tu lanh");
+//
+//        service.saveOrder(order, detail);
 
 //        for (OrderEntity order1 : service.findAllOrder()) {
 //            System.out.println(order1.getId());
@@ -95,12 +156,12 @@ public class Main {
 //            System.out.println("==============");
 //        }
 
-        for (OrderEntity order1 : service.findByCustomerName()) {
-            System.out.println("OrderID: " + order1.getId());
-            System.out.println("OrderDetailID: " + order1.getOrderDetailEntities().get(0).getId());
-            System.out.println("Address: " + order1.getCustomerAddress());
-            System.out.println("==============");
-        }
+//        for (OrderEntity order1 : service.findByCustomerName()) {
+//            System.out.println("OrderID: " + order1.getId());
+//            System.out.println("OrderDetailID: " + order1.getOrderDetailEntities().get(0).getId());
+//            System.out.println("Address: " + order1.getCustomerAddress());
+//            System.out.println("==============");
+//        }
 
     }
 

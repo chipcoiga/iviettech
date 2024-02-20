@@ -1,14 +1,14 @@
-package repository;
+package service;
 
 import entity.CustomerEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-//@Repository
-public interface CustomerRepository extends JpaRepository<CustomerEntity, Long> {
+public interface CustomerService {
+    void createCustomer(CustomerEntity entity);
+    List<CustomerEntity> findAll();
+    CustomerEntity findById(Long id);
     List<CustomerEntity> findByName(String name);
     List<CustomerEntity> findByPhoneOrEmail(String phone, String email);
     List<CustomerEntity> findBySexAndBirthdateBetween(Boolean sex, LocalDateTime from, LocalDateTime to);

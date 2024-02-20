@@ -13,6 +13,7 @@ public class OrderEntity {
     private int id;
     private LocalDateTime orderDate;
     private String customerName;
+
     private String customerAddress;
 
     @OneToMany(mappedBy = "orderEntity", fetch = FetchType.EAGER)
