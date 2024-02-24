@@ -1,11 +1,11 @@
 package com.example.pr51demomvc.service.impl;
 
+import com.example.pr51demomvc.entity.HomeEntity;
+import com.example.pr51demomvc.repository.HomeRepository;
+import com.example.pr51demomvc.service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import quandaica.com.demoforquan.entity.HomeEntity;
-import quandaica.com.demoforquan.repository.HomeRepository;
-import quandaica.com.demoforquan.service.HomeService;
 
 @Service
 public class HomeServiceImpl implements HomeService {
