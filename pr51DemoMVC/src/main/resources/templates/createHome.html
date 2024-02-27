@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Home</title>
+</head>
+<body>
+<form action="home" method="post" th:object="${home}">
+    <span>Name 1: </span>
+    <input type="text" th:field="*{name1}">
+    <span>Name 2: </span>
+    <input type="text" th:field="*{name2}">
+    <span> Name 3: </span>
+    <input type="text" th:field="*{name2}">
+    <button type="submit">Create home</button>
+</form>
+</body>
+</html>

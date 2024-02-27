@@ -38,6 +38,16 @@ public class HomeServiceImpl implements HomeService {
         entity1.setName1("Ly da tap trung tro lai");
     }
 
+    @Override
+    public void save(HomeEntity homeEntity) {
+        repository.save(homeEntity);
+    }
+
+    @Override
+    public HomeEntity getLatestHome() {
+        return repository.findFirstByIdNotNullOrderByIdAsc();
+    }
+
     private HomeEntity findOne() {
         return repository.findAll().get(0);
     }
