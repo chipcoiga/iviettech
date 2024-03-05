@@ -11,6 +11,7 @@ public class ProductEntity {
 
     private String name;
     private Double price;
+    private String imagePath;
 
     public Long getId() {
         return id;
@@ -34,5 +35,13 @@ public class ProductEntity {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }
