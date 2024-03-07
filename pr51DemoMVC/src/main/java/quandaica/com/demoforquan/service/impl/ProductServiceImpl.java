@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import quandaica.com.demoforquan.domain.UpSertProduct;
 import quandaica.com.demoforquan.entity.ProductEntity;
+import quandaica.com.demoforquan.remote.ProductRemote;
 import quandaica.com.demoforquan.repository.ProductRepository;
 import quandaica.com.demoforquan.service.ProductService;
 
@@ -17,9 +18,13 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository repository;
 
+    @Autowired
+    private ProductRemote remote;
+
     @Override
     public List<ProductEntity> getAll() {
-        return repository.findAll();
+//        return repository.findAll();
+        return remote.findAll();
     }
 
     @Override
@@ -28,7 +33,13 @@ public class ProductServiceImpl implements ProductService {
         entity.setName(product.getName());
         entity.setPrice(product.getPrice());
         entity.setImagePath(generateImagePath(product.getFile()));
-        repository.save(entity);
+//        repository.save(entity);
+        remote.insertProduct(entity);
+    }
+
+    @Override
+    public void insert(ProductEntity entity) {
+
     }
 
     private String generateImagePath(MultipartFile file) throws IOException {

@@ -10,4 +10,6 @@ public interface ProductService {
     List<ProductEntity> getAll();
 
     void create(UpSertProduct product) throws IOException;
+
+    void insert(ProductEntity entity);
 }
