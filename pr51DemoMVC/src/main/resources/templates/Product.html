@@ -11,6 +11,7 @@ List Product
         <thead>
         <tr>
             <th>ID</th>
+            <th>Image</th>
             <th>Name</th>
             <th>Price</th>
             <th>Add</th>
@@ -19,6 +20,7 @@ List Product
         <tbody>
         <tr th:each="prod : ${products}">
             <td th:text="${prod.id}"></td>
+            <td><img th:src="${prod.imagePath}" width="100" height="100"/></td>
             <td th:text="${prod.name}"></td>
             <td th:text="${prod.price}"></td>
             <td>

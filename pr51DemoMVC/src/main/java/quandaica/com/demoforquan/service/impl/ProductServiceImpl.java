@@ -32,19 +32,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     private String generateImagePath(MultipartFile file) throws IOException {
-        String fileExtension = getFileExtension(file.getOriginalFilename());
-
         File file1 = new File("/Users/lehuuloc/Documents/iViettech/Java53/demoForQuan/" + file.getOriginalFilename());
 
         try (OutputStream os = new FileOutputStream(file1)) {
             os.write(file.getBytes());
         }
 
-        return file1.getAbsolutePath();
+        return "/resources/" + file.getOriginalFilename();
     }
 
-
-    private String getFileExtension(String originalFilename) {
-        return "";
-    }
 }
