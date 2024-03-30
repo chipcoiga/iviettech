@@ -10,7 +10,8 @@ class AbcUniversityApplicationTests {
     void contextLoads() {
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] se) {
+        //.....
         System.out.println("Test create merged request");
     }
 }
